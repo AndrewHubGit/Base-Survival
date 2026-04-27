@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd12af32a742aa46a6fd850a926c003, type: 3}
+  m_Name: SimpleSpikes
+  m_EditorClassIdentifier: 
+  _itemToCraft: {fileID: 11400000, guid: 668a610f96f9c4f43a56b6d247e54ad6, type: 2}
+  _craftRecepie:
+  - {fileID: 11400000, guid: 5a0aefdc7dc858c48b6ab2d3463e64fc, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
