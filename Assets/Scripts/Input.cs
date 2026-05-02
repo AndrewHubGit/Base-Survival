@@ -60,49 +60,49 @@ public class Input : MonoBehaviour
     }
     public void OnSlotOne(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(0);
         }
     }
     public void OnSlotTwo(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(1);
         }
     }
     public void OnSlotThree(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(2);
         }
     }
     public void OnSlotFour(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(3);
         }
     }
     public void OnSlotFive(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(4);
         }
     }
     public void OnSlotSix(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(5);
         }
     }
     public void OnSlotSeven(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _hotbar.SelectSlot(6);
         }
