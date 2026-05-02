@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Mob
 {
     [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private GameObject _loseScreen;
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
@@ -18,6 +19,9 @@ public class Player : Mob
     }
     protected override void Death()
     {
-        Debug.Log("Player Died");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        _loseScreen.SetActive(true);
     }
 }

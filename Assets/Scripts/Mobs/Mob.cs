@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Mob : MonoBehaviour
 {
     [SerializeField] private MobData _mobData;
+    protected BoxCollider _collider;
     protected Vector3 _direction;
     protected int _maxHealth;
     protected int _health;
@@ -13,6 +14,7 @@ public abstract class Mob : MonoBehaviour
 
     protected virtual void Start()
     {
+        _collider = GetComponent<BoxCollider>();
         _maxHealth = _mobData.Health;
         _physics = GetComponent<Rigidbody>();
         _health = _mobData.Health;
