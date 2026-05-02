@@ -11,6 +11,7 @@ public class Input : MonoBehaviour
     private PlayerInput _playerInput;
     [SerializeField] private HotBar _hotbar;
     [SerializeField] private float _sensitivity;
+    [SerializeField] private GameObject _loseScreen;
     [SerializeField] private EnableInventory _playerInventory;
     private void Start()
     {
@@ -52,7 +53,7 @@ public class Input : MonoBehaviour
     }
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _loseScreen.activeSelf == false)
         {
             _playerInventory.InventorySwitch();
         }
