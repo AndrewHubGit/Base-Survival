@@ -50,6 +50,7 @@ public class Enemy : Mob
         _collider.enabled = false;
         enabled = false;
         _skeletonAnim.SetDead();
+        Destroy(gameObject, 6);
     }
     public void UseWeapon()
     {

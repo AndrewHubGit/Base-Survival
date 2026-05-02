@@ -6,6 +6,8 @@ public class Player : Mob
 {
     [SerializeField] private HealthBar _healthBar;
     [SerializeField] private GameObject _loseScreen;
+    [SerializeField] private GameObject _inventoryScreen;
+    [SerializeField] private GameObject _hotBarScreen;
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
@@ -22,6 +24,8 @@ public class Player : Mob
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
+        _inventoryScreen.SetActive(false);
+        _hotBarScreen.SetActive(false);
         _loseScreen.SetActive(true);
     }
 }
