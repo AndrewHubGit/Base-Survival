@@ -7,10 +7,12 @@ public class Weapon : UsableItem
     private int _damage;
     private float _attackDelay;
     private float _lastAttackTime;
+    private AudioSource _audioSource;
     [SerializeField] private LayerMask _layerDamage;
     [SerializeField] private WeaponData _weaponData;
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _damage = _weaponData.Damage;
         _attackDelay = _weaponData.AttackSpeed;
     }
@@ -18,6 +20,7 @@ public class Weapon : UsableItem
     {
         if (Time.time > _attackDelay + _lastAttackTime)
         {
+            _audioSource.Play();
             var hit = Physics.OverlapBox(transform.position, Vector3.one * 10, Quaternion.identity, _layerDamage);
             for (int i = 0; i < hit.Length; i++)
             {
