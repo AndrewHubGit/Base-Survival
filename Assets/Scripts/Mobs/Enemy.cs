@@ -46,9 +46,9 @@ public class Enemy : Mob
     }
     protected override void Death()
     {
+        enabled = false;
         _agent.enabled = false;
         _collider.enabled = false;
-        enabled = false;
         _skeletonAnim.SetDead();
         Destroy(gameObject, 6);
     }

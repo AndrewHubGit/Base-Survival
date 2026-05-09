@@ -9,6 +9,7 @@ public class Input : MonoBehaviour
 {
     private Player _player;
     private PlayerInput _playerInput;
+    [SerializeField] private InputActionReference _move;
     [SerializeField] private HotBar _hotbar;
     [SerializeField] private float _sensitivity;
     [SerializeField] private GameObject _loseScreen;
@@ -17,6 +18,16 @@ public class Input : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _playerInput = GetComponent<PlayerInput>();
+    }
+    private void Update()
+    {
+        if (Cursor.visible)
+        {
+            return;
+        }
+        Vector2 _playerInput = _move.action.ReadValue<Vector2>();
+        Vector3 _direction = _player.transform.right * _playerInput.x + _player.transform.forward * _playerInput.y;
+        _player.ChangeDirection(_direction);
     }
     public void OnUseItem(InputAction.CallbackContext context)
     {
@@ -28,16 +39,6 @@ public class Input : MonoBehaviour
         {
             _hotbar.UseItem();
         }
-    }
-    public void OnWalk(InputAction.CallbackContext context)
-    {
-        if (Cursor.visible)
-        {
-            return;
-        }
-        Vector2 _playerInput = context.ReadValue<Vector2>();
-        Vector3 _direction = _player.transform.right * _playerInput.x + _player.transform.forward * _playerInput.y;
-        _player.ChangeDirection(_direction);
     }
     public void OnCameraRotation(InputAction.CallbackContext context)
     {
