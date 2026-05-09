@@ -15,9 +15,9 @@ public class Player : Mob
     }
     protected override void Walk()
     {
-        Vector3 walkDirectiion = _direction * _walkSpeed;
-        walkDirectiion.y = _physics.velocity.y;
-        _physics.velocity = walkDirectiion;
+        Vector3 walkDirection = _direction * _walkSpeed;
+        walkDirection.y = _physics.velocity.y;
+        _physics.velocity = walkDirection;
     }
     protected override void Death()
     {

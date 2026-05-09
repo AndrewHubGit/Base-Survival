@@ -9795,6 +9795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319e11d80dda3c14ea780604c2e06f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _move: {fileID: -875168110430360431, guid: 17fca918c5929664daa6ec340cea7291, type: 3}
   _hotbar: {fileID: 849114071}
   _sensitivity: 0.04
   _loseScreen: {fileID: 710343833}
