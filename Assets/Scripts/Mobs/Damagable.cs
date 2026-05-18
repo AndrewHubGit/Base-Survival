@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Damagable : MonoBehaviour
+{
+    [SerializeField] protected DamagableData _damagableData;
+    protected Rigidbody _physics;
+    protected int _maxHealth;
+    protected int _health;
+    protected BoxCollider _collider;
+    protected virtual void Start()
+    {
+        _collider = GetComponent<BoxCollider>();
+        _physics = GetComponent<Rigidbody>();
+        _maxHealth = _damagableData.Health;
+        _health = _damagableData.Health;
+    }
+    public virtual void TakeDamage(int damage)
+    {
+        _health = _health - damage;
+        if (_health <= 0)
+        {
+            Death();
+        }
+    }
+    protected virtual void Death()
+    {
+        Destroy(gameObject);
+    }
+}

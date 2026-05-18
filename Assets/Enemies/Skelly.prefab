@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51761f9034c61a246a2c51bc8de2970d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mobData: {fileID: 11400000, guid: fc581af192d3fe444be15c1331330dbb, type: 2}
+  _damagableData: {fileID: 11400000, guid: fc581af192d3fe444be15c1331330dbb, type: 2}
   _weapon: {fileID: 5898529846052488432}
   _attackDistance: 5
 --- !u!114 &-5048639281994287581

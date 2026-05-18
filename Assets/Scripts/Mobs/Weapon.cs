@@ -20,7 +20,7 @@ public class Weapon : UsableItem
     {
         if (Time.time > _attackDelay + _lastAttackTime)
         {
-            _audioSource.Play();
+            //_audioSource.Play();
             var hit = Physics.OverlapBox(transform.position, Vector3.one * 10, Quaternion.identity, _layerDamage);
             for (int i = 0; i < hit.Length; i++)
             {
