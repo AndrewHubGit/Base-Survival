@@ -24,11 +24,11 @@ public class EnemySpawn : MonoBehaviour
             var randomTarget = Random.Range(0, 2);
             if(randomTarget == 0)
             {
-                spawnedEnemy.GetComponent<Enemy>().TargetPosition(_playerCenter);
+                spawnedEnemy.GetComponent<Enemy>().TargetPosition(_baseCentre);
             }
             else
             {
-                spawnedEnemy.GetComponent<Enemy>().TargetPosition(_playerCenter);
+                spawnedEnemy.GetComponent<Enemy>().TargetPosition(_baseCentre);
             }
             yield return new WaitForSeconds(_spawnRate);
         }

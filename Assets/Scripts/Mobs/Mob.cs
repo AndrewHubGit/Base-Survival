@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Mob : MonoBehaviour
+public abstract class Mob : Damagable
 {
-    [SerializeField] private MobData _mobData;
-    protected BoxCollider _collider;
     protected Vector3 _direction;
-    protected int _maxHealth;
-    protected int _health;
     protected int _walkSpeed;
-    protected Rigidbody _physics;
-
-    protected virtual void Start()
+    protected override void Start()
     {
-        _collider = GetComponent<BoxCollider>();
-        _maxHealth = _mobData.Health;
-        _physics = GetComponent<Rigidbody>();
-        _health = _mobData.Health;
-        _walkSpeed = _mobData.WalkSpeed;
+        base.Start();
+        var mobData = _damagableData as MobData;
+        _walkSpeed = mobData.WalkSpeed;
     }
     protected abstract void Walk();
-    protected abstract void Death();
     protected virtual void FixedUpdate()
     {
         Walk();
@@ -33,13 +24,5 @@ public abstract class Mob : MonoBehaviour
     public void SetRotation(Quaternion quaternion)
     {
         transform.rotation = quaternion;
-    }
-    public virtual void TakeDamage(int damage)
-    {
-        _health = _health - damage;
-        if (_health <= 0)
-        {
-            Death();
-        }
     }
 }
