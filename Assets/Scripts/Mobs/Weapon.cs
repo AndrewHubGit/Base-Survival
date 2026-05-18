@@ -24,7 +24,7 @@ public class Weapon : UsableItem
             var hit = Physics.OverlapBox(transform.position, Vector3.one * 10, Quaternion.identity, _layerDamage);
             for (int i = 0; i < hit.Length; i++)
             {
-                hit[i].GetComponent<Mob>().TakeDamage(_damage);
+                hit[i].GetComponent<Damagable>().TakeDamage(_damage);
             }
             _lastAttackTime = Time.time;
         }

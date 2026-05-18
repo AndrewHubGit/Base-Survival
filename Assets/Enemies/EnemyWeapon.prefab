@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 07ea21d6a3a1bb143b0aa1641f679293, type: 2}
     - target: {fileID: 919132149155446097, guid: e6225f7dca5ab5c44928ed351487e920, type: 3}
       propertyPath: m_Name
-      value: Sword
+      value: EnemyWeapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -95,5 +95,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerDamage:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   _weaponData: {fileID: 11400000, guid: d3e2c419c06f06c48842810a426b805a, type: 2}
