@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd12af32a742aa46a6fd850a926c003, type: 3}
   m_Name: WoodenWallData
   m_EditorClassIdentifier: 
-  _itemToCraft: {fileID: 11400000, guid: 5a0aefdc7dc858c48b6ab2d3463e64fc, type: 2}
+  _itemToCraft: {fileID: 11400000, guid: 8b12ae6c31bd69748912de3c6780ed46, type: 2}
   _craftRecepie:
   - {fileID: 0}
   - {fileID: 11400000, guid: 5a0aefdc7dc858c48b6ab2d3463e64fc, type: 2}
