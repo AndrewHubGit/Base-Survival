@@ -7,6 +7,7 @@ public class Enemy : Mob
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private float _attackDistance;
+    private static Quaternion _buildableRotation;
     private SkeletonAnimation _skeletonAnim;
     private NavMeshAgent _agent;
     private Transform _target;

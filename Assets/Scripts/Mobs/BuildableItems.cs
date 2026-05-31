@@ -9,6 +9,7 @@ public class BuildableItems : UsableItem
     [SerializeField] private LayerMask _layerBuild;
     [SerializeField] private GameObject _objectToBuild;
     [SerializeField] private Material _hologramMaterial;
+    private static Quaternion _buildableRotation;
     private GameObject _hologramRoot;
     private float _buildDistance = 13;
     private void Start()
@@ -34,6 +35,7 @@ public class BuildableItems : UsableItem
             var renderer = child.AddComponent<MeshRenderer>();
             renderer.material = _hologramMaterial;
         }
+        _hologramRoot.transform.rotation = _buildableRotation;
     }
     private void Update()
     {
@@ -65,5 +67,6 @@ public class BuildableItems : UsableItem
     public void RotateObject(int rotation)
     {
         _hologramRoot.transform.Rotate(Vector3.down * rotation);
+        _buildableRotation = _hologramRoot.transform.rotation;
     }
 }
