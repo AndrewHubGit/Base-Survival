@@ -58,4 +58,12 @@ public class HotBar : MonoBehaviour
             }
         }
     }
+    public void RotateItem(int rotation)
+    {
+        if (_usableItem is BuildableItems buildable)
+        {
+            Debug.Log("rotate");
+            buildable.RotateObject(rotation);
+        }
+    }
 }

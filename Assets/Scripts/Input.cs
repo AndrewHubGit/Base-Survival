@@ -108,4 +108,18 @@ public class Input : MonoBehaviour
             _hotbar.SelectSlot(6);
         }
     }
+    public void OnRotateLeft(InputAction.CallbackContext context )
+    {
+        if (context.performed)
+        {
+            _hotbar.RotateItem(-90);
+        }
+    }
+    public void OnRotateRight(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _hotbar.RotateItem(90);
+        }
+    }
 }

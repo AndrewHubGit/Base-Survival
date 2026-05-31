@@ -57,9 +57,13 @@ public class BuildableItems : UsableItem
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild))
         {
-            Instantiate(_objectToBuild, hitInfo.point, Quaternion.identity);
+            Instantiate(_objectToBuild, hitInfo.point, _hologramRoot.transform.rotation);
             return true;
         }
         return false;
+    }
+    public void RotateObject(int rotation)
+    {
+        _hologramRoot.transform.Rotate(Vector3.down * rotation);
     }
 }
