@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class Enemy : Mob
 {
     [SerializeField] private Weapon _weapon;
-    [SerializeField] private float _attackDistance;
     private static Quaternion _buildableRotation;
     private SkeletonAnimation _skeletonAnim;
     private NavMeshAgent _agent;
@@ -20,7 +19,7 @@ public class Enemy : Mob
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (Vector3.Distance(transform.position, _target.position) < _attackDistance)
+        if (Vector3.Distance(transform.position, _agent.path.corners[^1]) < _agent.stoppingDistance)
         {
             UseWeapon();
         }
@@ -35,7 +34,7 @@ public class Enemy : Mob
     }
     protected override void Walk()
     {
-        if(Vector3.Distance(transform.position, _target.position) < _agent.stoppingDistance)
+        if(Vector3.Distance(transform.position, _agent.path.corners[^1]) < _agent.stoppingDistance)
         {
             _skeletonAnim.SetRunning(false);
         }
@@ -43,7 +42,14 @@ public class Enemy : Mob
         {
             _skeletonAnim.SetRunning(true);
         }
-        _agent.SetDestination(_target.position);
+        if(_agent.pathStatus == NavMeshPathStatus.PathPartial)
+        {
+            _agent.SetDestination(_agent.path.corners[^1]);
+        }
+        else
+        {
+            _agent.SetDestination(_target.position);
+        }
     }
     protected override void Death()
     {
