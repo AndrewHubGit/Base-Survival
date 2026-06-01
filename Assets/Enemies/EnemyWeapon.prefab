@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33373c84244a4ec4487d4c713a932bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackingDistance: 3
   _layerDamage:
     serializedVersion: 2
     m_Bits: 320
