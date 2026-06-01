@@ -5,12 +5,14 @@ using UnityEngine;
 public class Damagable : MonoBehaviour
 {
     [SerializeField] protected DamagableData _damagableData;
+    protected MeshRenderer[] _renderer;
     protected Rigidbody _physics;
     protected int _maxHealth;
     protected int _health;
     protected BoxCollider _collider;
     protected virtual void Start()
     {
+        _renderer = GetComponentsInChildren<MeshRenderer>();
         _collider = GetComponent<BoxCollider>();
         _physics = GetComponent<Rigidbody>();
         _maxHealth = _damagableData.Health;
