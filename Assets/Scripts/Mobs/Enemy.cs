@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,13 +43,11 @@ public class Enemy : Mob
         {
             _skeletonAnim.SetRunning(true);
         }
-        if(_agent.pathStatus == NavMeshPathStatus.PathPartial)
+        Debug.Log(_agent.pathStatus);
+        var path = new NavMeshPath();
+        if(NavMesh.CalculatePath(transform.position, _target.position, NavMesh.AllAreas, path))
         {
-            _agent.SetDestination(_agent.path.corners[^1]);
-        }
-        else
-        {
-            _agent.SetDestination(_target.position);
+            _agent.SetDestination(path.corners[^1]);
         }
     }
     protected override void Death()
