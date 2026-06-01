@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Enemy : Mob
 {
     [SerializeField] private Weapon _weapon;
+    private bool _blockedPath;
     private static Quaternion _buildableRotation;
     private SkeletonAnimation _skeletonAnim;
     private NavMeshAgent _agent;
@@ -47,7 +48,16 @@ public class Enemy : Mob
         var path = new NavMeshPath();
         if(NavMesh.CalculatePath(transform.position, _target.position, NavMesh.AllAreas, path))
         {
-            _agent.SetDestination(path.corners[^1]);
+            if(path.status == NavMeshPathStatus.PathComplete)
+            {
+                _blockedPath = false;
+                _agent.SetDestination(path.corners[^1]);
+            }
+            if(path.status == NavMeshPathStatus.PathPartial && _blockedPath == false)
+            {
+                _blockedPath = true;
+                _agent.SetDestination(path.corners[^1]);
+            }
         }
     }
     protected override void Death()
