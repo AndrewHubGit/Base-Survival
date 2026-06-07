@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1111292475204979539, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -507,7 +511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damagableData: {fileID: 11400000, guid: fc581af192d3fe444be15c1331330dbb, type: 2}
   _weapon: {fileID: 1679205861365164308}
-  _attackDistance: 5
 --- !u!114 &-5048639281994287581
 MonoBehaviour:
   m_ObjectHideFlags: 0

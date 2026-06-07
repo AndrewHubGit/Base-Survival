@@ -65,6 +65,7 @@ public class Enemy : Mob
         enabled = false;
         _agent.enabled = false;
         _collider.enabled = false;
+        Debug.Log("died");
         _skeletonAnim.SetDead();
         Destroy(gameObject, 6);
     }
