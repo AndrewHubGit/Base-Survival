@@ -44,7 +44,6 @@ public class Enemy : Mob
         {
             _skeletonAnim.SetRunning(true);
         }
-        Debug.Log(_agent.pathStatus);
         var path = new NavMeshPath();
         if(NavMesh.CalculatePath(transform.position, _target.position, NavMesh.AllAreas, path))
         {
@@ -62,10 +61,10 @@ public class Enemy : Mob
     }
     protected override void Death()
     {
+        _isDead = true;
         enabled = false;
         _agent.enabled = false;
         _collider.enabled = false;
-        Debug.Log("died");
         _skeletonAnim.SetDead();
         Destroy(gameObject, 6);
     }
