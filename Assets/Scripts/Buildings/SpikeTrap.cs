@@ -20,6 +20,7 @@ public class SpikeTrap : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("enemy dies");
         if (other.gameObject.CompareTag("Enemy"))
         {
             var damagable = other.gameObject.GetComponent<Damagable>();

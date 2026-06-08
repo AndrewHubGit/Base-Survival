@@ -21,6 +21,7 @@ public class Player : Mob
     }
     protected override void Death()
     {
+        _isDead = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
