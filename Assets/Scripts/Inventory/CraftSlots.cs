@@ -35,6 +35,5 @@ public class CraftSlots : MonoBehaviour
             _inventory.RemoveStack(i);
         }
         _inventory.AddItem(craftRecepie.ItemToCraft);
-        Debug.Log("craft success");
     }
 }

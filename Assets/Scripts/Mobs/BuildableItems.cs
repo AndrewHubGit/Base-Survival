@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 using static Unity.VisualScripting.Member;
 
 public class BuildableItems : UsableItem
@@ -9,6 +11,7 @@ public class BuildableItems : UsableItem
     [SerializeField] private LayerMask _layerBuild;
     [SerializeField] private GameObject _objectToBuild;
     [SerializeField] private Material _hologramMaterial;
+    private Hologram _hologram;
     private static Quaternion _buildableRotation;
     private GameObject _hologramRoot;
     private float _buildDistance = 13;
@@ -17,6 +20,9 @@ public class BuildableItems : UsableItem
         var meshRenderers = GetComponentsInChildren<MeshRenderer>();
         _hologramRoot = new GameObject(gameObject.name + "_Hologram");
         _hologramRoot.transform.localScale = gameObject.transform.localScale;
+        _hologram = _hologramRoot.AddComponent<Hologram>();
+        var hologramPhysics = _hologramRoot.AddComponent<Rigidbody>();
+        hologramPhysics.constraints = RigidbodyConstraints.FreezeAll;
         for (int i = 0; i < meshRenderers.Length; i++)
         {
             var srcRenderer = meshRenderers[i];
@@ -30,7 +36,11 @@ public class BuildableItems : UsableItem
             child.transform.localScale = srcTransform.localScale;
 
             var filter = child.AddComponent<MeshFilter>();
+            var mesh = child.AddComponent<MeshCollider>();
+            mesh.convex = true;
+            mesh.isTrigger = true;
             filter.sharedMesh = srcRenderer.GetComponent<MeshFilter>().sharedMesh;
+            mesh.sharedMesh = filter.sharedMesh;
 
             var renderer = child.AddComponent<MeshRenderer>();
             renderer.material = _hologramMaterial;
@@ -57,7 +67,7 @@ public class BuildableItems : UsableItem
     public override bool Use()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild) && _hologram.CanBuild() == true)
         {
             Instantiate(_objectToBuild, hitInfo.point, _hologramRoot.transform.rotation);
             return true;
