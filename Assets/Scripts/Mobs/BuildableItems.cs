@@ -42,12 +42,8 @@ public class BuildableItems : UsableItem
             child.transform.localScale = srcTransform.localScale;
 
             var filter = child.AddComponent<MeshFilter>();
-            var mesh = child.AddComponent<MeshCollider>();
 
-            mesh.convex = true;
-            mesh.isTrigger = true;
             filter.sharedMesh = srcRenderer.GetComponent<MeshFilter>().sharedMesh;
-            mesh.sharedMesh = filter.sharedMesh;
 
             var renderer = child.AddComponent<MeshRenderer>();
 
