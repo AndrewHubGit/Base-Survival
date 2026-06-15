@@ -591,6 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021332722715718488}
   - component: {fileID: 7326818985120528744}
+  - component: {fileID: 5680473230508703157}
   m_Layer: 0
   m_Name: SimpleSpikes
   m_TagString: Untagged
@@ -641,6 +642,27 @@ MonoBehaviour:
   _objectToBuild: {fileID: 6501482482851584499, guid: 9cfb42e80baa82849a6b78ab15832e95, type: 3}
   _hologramMaterialCanBuild: {fileID: 2100000, guid: 5737016ee93504545a5113b2ff1cb1eb, type: 2}
   _hologramMaterialNoBuild: {fileID: 2100000, guid: 5f8269db6bfd0c143aaa28f50318df27, type: 2}
+--- !u!65 &5680473230508703157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501482482851584499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.029085042, y: 0.021124786, z: 0.028897109}
+  m_Center: {x: 0.00039132635, y: 0.009986141, z: 0.0005617009}
 --- !u!1 &6750104436018894091
 GameObject:
   m_ObjectHideFlags: 0
