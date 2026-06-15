@@ -8,7 +8,6 @@ public class Hologram : MonoBehaviour
     public bool CanBuild()
     {
         var raycast = Physics.OverlapBox(transform.position, Vector3.one * 6, Quaternion.identity, LayerMask.GetMask("Building"));
-        Debug.Log(raycast.Length);
         return raycast.Length == 0;
     }
 }

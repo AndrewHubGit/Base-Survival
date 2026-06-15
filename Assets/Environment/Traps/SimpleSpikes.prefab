@@ -639,7 +639,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _objectToBuild: {fileID: 6501482482851584499, guid: 9cfb42e80baa82849a6b78ab15832e95, type: 3}
-  _hologramMaterial: {fileID: 2100000, guid: 5737016ee93504545a5113b2ff1cb1eb, type: 2}
+  _hologramMaterialCanBuild: {fileID: 2100000, guid: 5737016ee93504545a5113b2ff1cb1eb, type: 2}
+  _hologramMaterialNoBuild: {fileID: 2100000, guid: 5f8269db6bfd0c143aaa28f50318df27, type: 2}
 --- !u!1 &6750104436018894091
 GameObject:
   m_ObjectHideFlags: 0
