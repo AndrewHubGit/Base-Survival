@@ -5,9 +5,15 @@ using static UnityEngine.ParticleSystem;
 
 public class Hologram : MonoBehaviour
 {
-    public bool CanBuild()
+    private BoxCollider _collider;
+    public bool CanBuild(BoxCollider canBuildCollider)
     {
-        var raycast = Physics.OverlapBox(transform.position, Vector3.one * 6, Quaternion.identity, LayerMask.GetMask("Building"));
+        _collider = canBuildCollider;
+        var raycast = Physics.OverlapBox(transform.position, canBuildCollider.size * 80, Quaternion.identity, LayerMask.GetMask("Building"));
         return raycast.Length == 0;
+    }
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, _collider.size * 80);
     }
 }

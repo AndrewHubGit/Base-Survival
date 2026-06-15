@@ -12,6 +12,7 @@ public class BuildableItems : UsableItem
     [SerializeField] private GameObject _objectToBuild;
     [SerializeField] private Material _hologramMaterialCanBuild;
     [SerializeField] private Material _hologramMaterialNoBuild;
+    private BoxCollider _buildCollider;
     private MeshRenderer[] _hologramRenderer;
     private Hologram _hologram;
     private static Quaternion _buildableRotation;
@@ -19,6 +20,7 @@ public class BuildableItems : UsableItem
     private float _buildDistance = 13;
     private void Start()
     {
+        _buildCollider = GetComponent<BoxCollider>();
         var meshRenderers = GetComponentsInChildren<MeshRenderer>();
 
         _hologramRoot = new GameObject(gameObject.name + "_Hologram");
@@ -42,12 +44,8 @@ public class BuildableItems : UsableItem
             child.transform.localScale = srcTransform.localScale;
 
             var filter = child.AddComponent<MeshFilter>();
-            var mesh = child.AddComponent<MeshCollider>();
 
-            mesh.convex = true;
-            mesh.isTrigger = true;
             filter.sharedMesh = srcRenderer.GetComponent<MeshFilter>().sharedMesh;
-            mesh.sharedMesh = filter.sharedMesh;
 
             var renderer = child.AddComponent<MeshRenderer>();
 
@@ -59,7 +57,7 @@ public class BuildableItems : UsableItem
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if(_hologram.CanBuild() == true)
+        if(_hologram.CanBuild(_buildCollider) == true)
         {
             for (int i = 0; i < _hologramRenderer.Length; i++)
             {
@@ -90,7 +88,7 @@ public class BuildableItems : UsableItem
     public override bool Use()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild) && _hologram.CanBuild() == true)
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild) && _hologram.CanBuild(_buildCollider) == true)
         {
             Instantiate(_objectToBuild, hitInfo.point, _hologramRoot.transform.rotation);
             return true;
