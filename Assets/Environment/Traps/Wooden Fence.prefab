@@ -121,4 +121,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _objectToBuild: {fileID: 4919810109966158832, guid: 340fe0491b702f843ac814019e258cb7, type: 3}
-  _hologramMaterial: {fileID: 2100000, guid: 5737016ee93504545a5113b2ff1cb1eb, type: 2}
+  _hologramMaterialCanBuild: {fileID: 2100000, guid: 5737016ee93504545a5113b2ff1cb1eb, type: 2}
+  _hologramMaterialNoBuild: {fileID: 2100000, guid: 5f8269db6bfd0c143aaa28f50318df27, type: 2}

@@ -10,7 +10,9 @@ public class BuildableItems : UsableItem
 {
     [SerializeField] private LayerMask _layerBuild;
     [SerializeField] private GameObject _objectToBuild;
-    [SerializeField] private Material _hologramMaterial;
+    [SerializeField] private Material _hologramMaterialCanBuild;
+    [SerializeField] private Material _hologramMaterialNoBuild;
+    private MeshRenderer[] _hologramRenderer;
     private Hologram _hologram;
     private static Quaternion _buildableRotation;
     private GameObject _hologramRoot;
@@ -18,11 +20,15 @@ public class BuildableItems : UsableItem
     private void Start()
     {
         var meshRenderers = GetComponentsInChildren<MeshRenderer>();
+
         _hologramRoot = new GameObject(gameObject.name + "_Hologram");
         _hologramRoot.transform.localScale = gameObject.transform.localScale;
         _hologram = _hologramRoot.AddComponent<Hologram>();
+
         var hologramPhysics = _hologramRoot.AddComponent<Rigidbody>();
         hologramPhysics.constraints = RigidbodyConstraints.FreezeAll;
+
+        _hologramRenderer = new MeshRenderer[meshRenderers.Length];
         for (int i = 0; i < meshRenderers.Length; i++)
         {
             var srcRenderer = meshRenderers[i];
@@ -37,19 +43,36 @@ public class BuildableItems : UsableItem
 
             var filter = child.AddComponent<MeshFilter>();
             var mesh = child.AddComponent<MeshCollider>();
+
             mesh.convex = true;
             mesh.isTrigger = true;
             filter.sharedMesh = srcRenderer.GetComponent<MeshFilter>().sharedMesh;
             mesh.sharedMesh = filter.sharedMesh;
 
             var renderer = child.AddComponent<MeshRenderer>();
-            renderer.material = _hologramMaterial;
+
+            renderer.material = _hologramMaterialCanBuild;
+            _hologramRenderer[i] = renderer;
         }
-        _hologramRoot.transform.rotation = _buildableRotation;
+        _hologramRoot.transform.rotation = _buildableRotation;   
     }
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if(_hologram.CanBuild() == true)
+        {
+            for (int i = 0; i < _hologramRenderer.Length; i++)
+            {
+                _hologramRenderer[i].material = _hologramMaterialCanBuild;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _hologramRenderer.Length; i++)
+            {
+                _hologramRenderer[i].material = _hologramMaterialNoBuild;
+            }
+        }
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _buildDistance, _layerBuild))
         {
             _hologramRoot.SetActive(true);
