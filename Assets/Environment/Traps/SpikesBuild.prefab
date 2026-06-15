@@ -593,9 +593,9 @@ GameObject:
   - component: {fileID: -6070230115328124686}
   - component: {fileID: 6715767727137520121}
   - component: {fileID: 7645884088177281823}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpikesBuild
-  m_TagString: Untagged
+  m_TagString: Buillding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
